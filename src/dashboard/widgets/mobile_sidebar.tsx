@@ -65,7 +65,7 @@ const MobileSideBar = ({ links }: { links: Array<Record<string, string>> }) => {
       {/* Button for toggling the sidebar */}
       <button
         onClick={() => cycleOpen()}
-        className="right-4 top-4 z-10 m-auto block aspect-square size-8 rounded-lg bg-red-200 p-1 transition-colors duration-300 ease-in-out hover:bg-red-300 md:hidden"
+        className="right-4 top-4 z-50 m-auto block aspect-square size-8 rounded-lg bg-red-200 p-1 backdrop-blur-2xl transition-colors duration-300 ease-in-out hover:bg-red-300 md:hidden"
       >
         <FontAwesomeIcon icon={faBars} rotate={open ? "0deg" : "90deg"} />
       </button>
@@ -74,7 +74,7 @@ const MobileSideBar = ({ links }: { links: Array<Record<string, string>> }) => {
         {/* Sidebar */}
         {open && (
           <motion.aside
-            className="absolute right-[4rem] top-0  w-full rounded-md bg-red-400/40 p-4"
+            className="absolute right-[4rem] top-0  w-full rounded-md bg-red-300 p-4"
             initial={{ width: 0 }}
             animate={{
               width: "200px",

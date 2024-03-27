@@ -1,24 +1,14 @@
+//! libs...
+import { NavLink, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
+//! icons...
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { motion } from "framer-motion";
-import { NavLink, useLocation } from "react-router-dom";
+//! components & data
 import MobileSideBar from "./mobile_sidebar";
-
-type NavLink = {
-  label: string;
-  to: string;
-};
+import { navLinks } from "../data/types";
 
 const Header: React.FC = () => {
-  const navLinks: NavLink[] = [
-    { label: "Dashboard", to: "/dashboard" },
-    { label: "Pools", to: "/pools" },
-    { label: "Tokens", to: "/tokens" },
-    { label: "Market", to: "/market" },
-    { label: "NFT", to: "/nft" },
-  ];
-
   const location = useLocation();
   console.log(location.pathname);
 
@@ -32,9 +22,9 @@ const Header: React.FC = () => {
           src="/assets/logo.png"
           alt="site logo"
           className=" w-32 md:block lg:w-40"
-          initial={{ opacity: 0, x: -20, scale: 0 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 0.6, ease: "circInOut" }}
+          initial={{ opacity: 0, x: -200 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, ease: "circInOut" }}
         />
 
         {/* main navigation bar with stagger animation : added 0.6s delay to show the animation after the logo animation finish and added index*0.1s to do stagger effect */}
@@ -45,7 +35,7 @@ const Header: React.FC = () => {
                 key={link.to}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 + index * 0.1, duration: 0.5 }}
+                transition={{ delay: 1.1 + index * 0.1, duration: 0.5 }}
                 className="group relative font-semibold"
               >
                 <NavLink to={link.to}>{link.label}</NavLink>

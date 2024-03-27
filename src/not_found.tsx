@@ -6,13 +6,13 @@ const NotFoundPage: React.FC = () => {
   const navigator = useNavigate();
   return (
     <motion.div
-      className="flex h-screen flex-col items-center justify-center"
+      className="flex  h-full flex-col items-center justify-center bg-white p-2"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
       <motion.h1
-        className="mb-4 text-4xl font-bold text-gray-800"
+        className="mb-4 text-xl font-bold text-gray-800 md:text-4xl"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.3 }}
@@ -20,7 +20,7 @@ const NotFoundPage: React.FC = () => {
         404 - Page Not Found
       </motion.h1>
       <motion.p
-        className="mb-8 text-lg text-gray-600"
+        className="mb-8 text-gray-600 md:text-lg"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.4 }}

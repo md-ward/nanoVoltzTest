@@ -1,17 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./layout";
-import ChartsPage from "./dashboard/view/charts_page";
 import NotFoundPage from "./not_found";
+import DashboardPage from "./dashboard/view/Dashboard_page";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route
-          index
-          path="dashboard"
-          element={<ChartsPage></ChartsPage>}
-        ></Route>
+        <Route index path="/" element={<DashboardPage></DashboardPage>}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Route>
     </Routes>

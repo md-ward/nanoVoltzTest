@@ -10,7 +10,6 @@ const Layout = () => {
   return (
     <main className="min-h-screen w-screen overflow-hidden bg-red-100">
       <Header></Header>
-      {/* <SideBar></SideBar> */}
       <Outlet></Outlet>
     </main>
   );
