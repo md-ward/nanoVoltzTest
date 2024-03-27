@@ -1,7 +1,8 @@
-import { DataGrid, GridColDef, useGridApiRef } from "@mui/x-data-grid";
-import { employeesData } from "../data/dummy_data";
 import { faCloud, faPrint, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { DataGrid, GridColDef, useGridApiRef } from "@mui/x-data-grid";
+import { GridApiCommunity } from "@mui/x-data-grid/internals";
+import { employeesData } from "../data/dummy_data";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -15,7 +16,8 @@ const columns: GridColDef[] = [
 ];
 
 // ! used ref to access table data and print
-function printTableAsPdf(tableRef: { current: any }) {
+function printTableAsPdf(tableRef: React.MutableRefObject<GridApiCommunity>) {
+  
   const input = tableRef.current;
   input.exportDataAsPrint();
 }
@@ -36,13 +38,6 @@ const iconButtons = [
       alert("Save / Sync to cloud");
     },
   },
-  {
-    id: "print",
-    icon: faPrint,
-    fun: (tableRef: any) => {
-      printTableAsPdf(tableRef);
-    },
-  },
 ];
 
 export default function EmployeesDataTable() {
@@ -57,13 +52,17 @@ export default function EmployeesDataTable() {
             <div
               className="cursor-pointer"
               key={button.id}
-              onClick={() =>
-                button.id !== "print" ? button.fun() : button.fun(tableRef)
-              }
+              onClick={() => button.fun()}
             >
               <FontAwesomeIcon icon={button.icon} />
             </div>
           ))}
+          <div
+            className="cursor-pointer"
+            onClick={() => printTableAsPdf(tableRef)}
+          >
+            <FontAwesomeIcon icon={faPrint} />
+          </div>
         </div>
       </section>
 
