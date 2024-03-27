@@ -1,30 +1,39 @@
-# React + TypeScript + Vite
+# nanoVolts Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a dashboard developed as a test for nanoVolts. It provides a user interface for managing and visualizing data. The dashboard is built using Vite-React and TypeScript, and utilizes various libraries for styling and functionality.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Interactive charts and data grids for visualizing data
+- Routing using React Router (react-router-dom) for navigation between pages
+- Styling with TailwindCss and normal CSS for a modern and responsive design
+- Integration with MUI (Material-UI) components for UI elements and styling : Table and Charts
+- Linting and code formatting using ESLint and Prettier
+- Animation using Framer Motion Library
 
-## Expanding the ESLint configuration
+## Libraries Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The following libraries and dependencies are used in this project:
 
-- Configure the top-level `parserOptions` property like this:
+- Tailwind CSS: ^3.4.1
+- MUI (Material-UI): ^5.15.14
+- MUI Styled Engine SC: ^6.0.0-alpha.18
+- MUI X Charts: ^7.0.0
+- MUI X Data Grid: ^7.0.0
+- Framer Motion: ^11.0.20
+- and more
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Getting Started
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+To get started with the dashboard, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/md-ward/nanoVoltzTest.git`
+2. Install the dependencies: `npm install`
+3. Run the development server: `npm run dev`
+4. OR you Can test the built version by `npm run build` then run it with `npm run preview`
+
+## Assets And icons
+
+- For used Icons I used Fontawesome Library
+- Random profile Image form the Internet
+

@@ -6,7 +6,7 @@ const NotFoundPage: React.FC = () => {
   const navigator = useNavigate();
   return (
     <motion.div
-      className="flex  h-full flex-col items-center justify-center bg-white p-2"
+      className="flex  h-full   translate-y-full  flex-col    items-center justify-center  p-2"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

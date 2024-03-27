@@ -16,6 +16,7 @@ const DashboardPage = () => {
           <BasicBars />
         </div>
         {/* Crypto data cards */}
+        {/* Note: I used thumb-thin and custom-scrollbar to change the style of the vertical scroll .. */}
         <div className="thumb-thin custom-scrollbar flex   gap-4 overflow-x-auto rounded-md bg-white p-2 shadow-md">
           {cryptodata.map((item, index) => (
             <CryptoDataCard key={index} cryptoData={item} />

@@ -1,4 +1,7 @@
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, useGridApiRef } from "@mui/x-data-grid";
+import { employeesData } from "../data/dummy_data";
+import { faCloud, faPrint, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const columns: GridColDef[] = [
   { field: "id", headerName: "ID", width: 70 },
@@ -11,126 +14,63 @@ const columns: GridColDef[] = [
   { field: "comments", headerName: "Comments", width: 200 },
 ];
 
-const rows = [
+// ! used ref to access table data and print
+function printTableAsPdf(tableRef: { current: any }) {
+  const input = tableRef.current;
+  input.exportDataAsPrint();
+}
+
+//! icon buttons in the table harder
+const iconButtons = [
   {
-    id: 1,
-    name: "Jon Snow",
-    phone: "123-456-7890",
-    applied: "Yes",
-    shift: "Morning",
-    substitution: "None",
-    status: "Active",
-    comments: "N/A",
+    id: "search",
+    icon: faSearch,
+    fun: () => {
+      alert("search logic");
+    },
   },
   {
-    id: 2,
-    name: "Cersei Lannister",
-    phone: "987-654-3210",
-    applied: "No",
-    shift: "Evening",
-    substitution: "None",
-    status: "Inactive",
-    comments: "N/A",
+    id: "save",
+    icon: faCloud,
+    fun: () => {
+      alert("Save / Sync to cloud");
+    },
   },
   {
-    id: 3,
-    name: "Jaime Lannister",
-    phone: "555-555-5555",
-    applied: "Yes",
-    shift: "Night",
-    substitution: "None",
-    status: "Active",
-    comments: "N/A",
-  },
-  {
-    id: 4,
-    name: "Arya Stark",
-    phone: "111-222-3333",
-    applied: "Yes",
-    shift: "Morning",
-    substitution: "None",
-    status: "Active",
-    comments: "N/A",
-  },
-  {
-    id: 5,
-    name: "Daenerys Targaryen",
-    phone: "444-444-4444",
-    applied: "Yes",
-    shift: "Night",
-    substitution: "None",
-    status: "Active",
-    comments: "N/A",
-  },
-  {
-    id: 6,
-    name: "Melisandre",
-    phone: "999-999-9999",
-    applied: "Yes",
-    shift: "Morning",
-    substitution: "None",
-    status: "Active",
-    comments: "N/A",
-  },
-  {
-    id: 7,
-    name: "Ferrara Clifford",
-    phone: "777-777-7777",
-    applied: "No",
-    shift: "Evening",
-    substitution: "None",
-    status: "Inactive",
-    comments: "N/A",
-  },
-  {
-    id: 8,
-    name: "Rossini Frances",
-    phone: "888-888-8888",
-    applied: "Yes",
-    shift: "Night",
-    substitution: "None",
-    status: "Active",
-    comments: "N/A",
-  },
-  {
-    id: 9,
-    name: "Harvey Roxie",
-    phone: "666-666-6666",
-    applied: "No",
-    shift: "Morning",
-    substitution: "None",
-    status: "Inactive",
-    comments: "N/A",
-  },
-  {
-    id: 10,
-    name: "Jack Roxie",
-    phone: "986-666-6666",
-    applied: "Yes",
-    shift: "Night",
-    substitution: "None",
-    status: "Inactive",
-    comments: "N/A",
-  },
-  {
-    id: 11,
-    name: "Adam Roxie",
-    phone: "666-680-6666",
-    applied: "No",
-    shift: "Morning",
-    substitution: "None",
-    status: "Active",
-    comments: "N/A",
+    id: "print",
+    icon: faPrint,
+    fun: (tableRef: any) => {
+      printTableAsPdf(tableRef);
+    },
   },
 ];
 
-export default function DataTable() {
+export default function EmployeesDataTable() {
+  const tableRef = useGridApiRef();
+
   return (
-    <div className="mx-auto h-fit w-full overflow-hidden bg-white p-2 rounded-md ">
-          <DataGrid
-              
+    <div className="h-96 rounded-md bg-white p-2">
+      <section className="flex flex-row justify-between px-2">
+        <h1>Employee</h1>
+        <div className="flex w-1/3 justify-end gap-9">
+          {iconButtons.map((button) => (
+            <div
+              className="cursor-pointer"
+              key={button.id}
+              onClick={() =>
+                button.id !== "print" ? button.fun() : button.fun(tableRef)
+              }
+            >
+              <FontAwesomeIcon icon={button.icon} />
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <DataGrid
+        apiRef={tableRef}
         filterMode="server"
-        rows={rows}
+        rows={employeesData}
         columns={columns}
         initialState={{
           pagination: {
